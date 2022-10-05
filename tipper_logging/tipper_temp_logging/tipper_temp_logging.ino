@@ -10,7 +10,7 @@ OneWire oneWire(ONE_WIRE_BUS);
 // Pass oneWire reference to DallasTemperature library
 DallasTemperature sensors(&oneWire);
 
-int barrel_id = 2;
+int barrel_id = 1;
 int deviceCount = 0;
 float tempC;
 const int  R1TipperPin = 14;  // digital in 2 (pin the reactor 1's tipper is attached to)
@@ -18,7 +18,7 @@ int R1TipperCounter = 0;
 int R1TipperState = 1;
 int lastR1TipperState = 1;
 unsigned long previousMillis = 0;
-const long interval = 3000; //milliseconds between each print of number of tips (1000ms = 1 second), 1800000 = 30 mins
+const long interval = 3000;
 
 void setup(void)
 {
