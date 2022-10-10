@@ -61,6 +61,7 @@ for port, desc, hwid in sorted(ports):
          print('Requested device found mega 2')
          print(port)
          Megas.append(port)
+
         elif '2341:0042' in hwid:
           print('Requested device found mega 3')
           print(port)
@@ -69,6 +70,16 @@ for port, desc, hwid in sorted(ports):
           print('Requested device found mega 4')
           print(port)
           Megas.append(port)
+
+        # elif '2341:0042' in hwid:
+        #   print('Requested device found mega 3')
+        #   print(port)
+        #   Megas.append(port)
+        # elif '2341:0042' in hwid:
+        #   print('Requested device found mega 4')
+        #   print(port)
+        #   Megas.append(port)
+
       
           
 print('Megas as port:')          
@@ -78,7 +89,7 @@ print(Megas)
            
 
 ser1 = serial.Serial(str(Megas[0]),  9600, timeout = 25)
-#ser2 = serial.Serial(str(Megas[1]),  9600, timeout = 25)
+ser2 = serial.Serial(str(Megas[1]),  9600, timeout = 25)
 #ser3 = serial.Serial(str(Megas[2]),  9600, timeout = 25)
 #ser4 = serial.Serial(str(Megas[3]),  9600, timeout = 25)
 print("channels correct")
@@ -88,11 +99,12 @@ time.sleep(5)
 if __name__ == '__main__':
     
    
-   
-    
-   
-    
-  
+
+    ser1.flush()
+    ser2.flush()
+    #ser3.flush()
+    #ser4.flush()
+
 
     i = 0
 
@@ -119,15 +131,15 @@ if __name__ == '__main__':
                     writer.writerow([time.asctime(),line1])
                     
 
-            # if ser2.in_waiting > 0:
+            if ser2.in_waiting > 0:
             
-            #     line2 = ser2.readline().decode("utf-8")
+                line2 = ser2.readline().decode("utf-8")
                 
                 
-            #     with open ("Sensor_B.csv","a") as f:
+                with open ("Sensor_B.csv","a") as f:
                     
-            #         writer = csv.writer(f, delimiter=",")
-            #         writer.writerow([time.asctime(),line2])
+                    writer = csv.writer(f, delimiter=",")
+                    writer.writerow([time.asctime(),line2])
                     
                     
                     
@@ -155,9 +167,13 @@ if __name__ == '__main__':
            
             print('writing data')
             print(line1)
+<<<<<<< HEAD
            
                 
             # print(line2)
+=======
+            print(line2)
+>>>>>>> f92fe7ad00656af34cb07da0ef7065f73d6874d1
             # print(line3)
             # print(line4)
 
@@ -174,7 +190,7 @@ if __name__ == '__main__':
          if i == 5000: 
              i = 0
              data = pd.DataFrame()
-             upload_file_list = ['Sensor_A.csv']
+             upload_file_list = ['Sensor_A.csv', 'Sensor_B.csv' ]
             #  upload_file_list = ['Sensor_A.csv', 'Sensor_B.csv', 'Sensor_C.csv','Sensor_D.csv']
              
              colnames = ['datetime','vals']
