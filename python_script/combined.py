@@ -28,7 +28,7 @@ line1 = None
 line2 = None
 line3 = None 
 line4 = None 
-line5 = None
+
 
 
 
@@ -57,18 +57,18 @@ for port, desc, hwid in sorted(ports):
           print('Requested device found mega 1')
           print(port)
           Megas.append(port)
-        #elif '2341:0042' in hwid:
-        #  print('Requested device found mega 2')
-        #  print(port)
-        #  Megas.append(port)
-        # elif '2341:0042' in hwid:
-        #   print('Requested device found mega 3')
-        #   print(port)
-        #   Megas.append(port)
-        # elif '2341:0042' in hwid:
-        #   print('Requested device found mega 4')
-        #   print(port)
-        #   Megas.append(port)
+        elif '2341:0042' in hwid:
+         print('Requested device found mega 2')
+         print(port)
+         Megas.append(port)
+        elif '2341:0042' in hwid:
+          print('Requested device found mega 3')
+          print(port)
+          Megas.append(port)
+        elif '2341:0042' in hwid:
+          print('Requested device found mega 4')
+          print(port)
+          Megas.append(port)
       
           
 print('Megas as port:')          
@@ -92,16 +92,18 @@ if __name__ == '__main__':
     
    
     
-    ser1.flush()
-    #ser2.flush()
-    #ser3.flush()
-    #ser4.flush()
+  
 
     i = 0
 
    
     while True:
-         time.sleep(1)
+         time.sleep(0.1)
+         ser1.flush()
+        #ser2.flush()
+        #ser3.flush()
+        #ser4.flush()
+
          i +=1
          print('Current count =')
          print(i)
@@ -153,6 +155,8 @@ if __name__ == '__main__':
            
             print('writing data')
             print(line1)
+           
+                
             # print(line2)
             # print(line3)
             # print(line4)
@@ -179,11 +183,10 @@ if __name__ == '__main__':
                  df = df['vals'].str.split(',', expand=True)
                  df.index = pd.to_datetime(df.index, format="%a %b %d %X %Y")
                  print('processing gas data')
-                 df = df.iloc[:, : 5]
+                 #df = df.iloc[:, : 2]
                  data = data.append(df)
                  os.remove(upload_file)
-                 print('this is the data:')
-                 print(data)
+                 
         
                     
                     
@@ -192,11 +195,13 @@ if __name__ == '__main__':
              
              
 #              data[['ID','CH4','CO2','OH','Cnt']]= data.loc[:,'vals'].str.split(',',4, expand =True)
-             
+             data = data.iloc[:, : 4]
+             print(data)
+
              data.columns =['ID','Tmp1','Tmp2','Cnt']
              data.reset_index(inplace =True)
              data.set_index(['datetime'], inplace = True)
-             data = data[::20]
+             data = data[::5]
            
                 
              curr = time.time()
@@ -213,5 +218,5 @@ if __name__ == '__main__':
                  gfile = drive.CreateFile({'parents': [{'id': '1_LtZRQVqpSoFI4H-MOBNzH8vX4Yr8tTH'}]})
                  gfile.SetContentFile(file)
                  gfile.Upload() # Upload the file.
-                 os.remove(file)
+                 #os.remove(file)
                        

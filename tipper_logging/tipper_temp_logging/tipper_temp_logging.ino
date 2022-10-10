@@ -18,7 +18,7 @@ int R1TipperCounter = 0;
 int R1TipperState = 1;
 int lastR1TipperState = 1;
 unsigned long previousMillis = 0;
-const long interval = 3000;
+const long interval = 200;
 
 void setup(void)
 {
