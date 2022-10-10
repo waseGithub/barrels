@@ -112,7 +112,7 @@ if __name__ == '__main__':
     while True:
          time.sleep(0.1)
          ser1.flush()
-        #ser2.flush()
+         ser2.flush()
         #ser3.flush()
         #ser4.flush()
 
@@ -166,14 +166,8 @@ if __name__ == '__main__':
             
            
             print('writing data')
-            print(line1)
-<<<<<<< HEAD
-           
-                
-            # print(line2)
-=======
+            print(line1) 
             print(line2)
->>>>>>> f92fe7ad00656af34cb07da0ef7065f73d6874d1
             # print(line3)
             # print(line4)
 
@@ -187,7 +181,7 @@ if __name__ == '__main__':
        #######################################
       #######################################   
                 
-         if i == 5000: 
+         if i == 100: 
              i = 0
              data = pd.DataFrame()
              upload_file_list = ['Sensor_A.csv', 'Sensor_B.csv' ]
@@ -231,8 +225,8 @@ if __name__ == '__main__':
              upload_online = [uploadfile1]
              for file in upload_online:
              #1_LtZRQVqpSoFI4H-MOBNzH8vX4Yr8tTH
-                 gfile = drive.CreateFile({'parents': [{'id': '1_LtZRQVqpSoFI4H-MOBNzH8vX4Yr8tTH'}]})
+                 gfile = drive.CreateFile({'parents': [{'id': '15m_EWk_HQalKw_CTmJsJZdgMkLMntDj6'}]})
                  gfile.SetContentFile(file)
                  gfile.Upload() # Upload the file.
-                 #os.remove(file)
+                 os.remove(file)
                        
