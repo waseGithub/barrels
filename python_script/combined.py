@@ -50,7 +50,7 @@ import serial.tools.list_ports
 ports = serial.tools.list_ports.comports()
 
 Megas = []
-#unos = []
+
 for port, desc, hwid in sorted(ports):
         print("{}: {} [{}]".format(port, desc, hwid))
         if '2341:0042' in hwid:
@@ -61,7 +61,6 @@ for port, desc, hwid in sorted(ports):
          print('Requested device found mega 2')
          print(port)
          Megas.append(port)
-
         elif '2341:0042' in hwid:
           print('Requested device found mega 3')
           print(port)
@@ -71,14 +70,14 @@ for port, desc, hwid in sorted(ports):
           print(port)
           Megas.append(port)
 
-        # elif '2341:0042' in hwid:
-        #   print('Requested device found mega 3')
-        #   print(port)
-        #   Megas.append(port)
-        # elif '2341:0042' in hwid:
-        #   print('Requested device found mega 4')
-        #   print(port)
-        #   Megas.append(port)
+        elif '2341:0042' in hwid:
+          print('Requested device found mega 3')
+          print(port)
+          Megas.append(port)
+        elif '2341:0042' in hwid:
+          print('Requested device found mega 4')
+          print(port)
+          Megas.append(port)
 
       
           
@@ -90,8 +89,8 @@ print(Megas)
 
 ser1 = serial.Serial(str(Megas[0]),  9600, timeout = 25)
 ser2 = serial.Serial(str(Megas[1]),  9600, timeout = 25)
-#ser3 = serial.Serial(str(Megas[2]),  9600, timeout = 25)
-#ser4 = serial.Serial(str(Megas[3]),  9600, timeout = 25)
+ser3 = serial.Serial(str(Megas[2]),  9600, timeout = 25)
+ser4 = serial.Serial(str(Megas[3]),  9600, timeout = 25)
 print("channels correct")
     
 time.sleep(5)
@@ -102,19 +101,18 @@ if __name__ == '__main__':
 
     ser1.flush()
     ser2.flush()
-    #ser3.flush()
-    #ser4.flush()
+    ser3.flush()
+    ser4.flush()
 
 
     i = 0
 
    
     while True:
-         time.sleep(0.1)
          ser1.flush()
          ser2.flush()
-        #ser3.flush()
-        #ser4.flush()
+         ser3.flush()
+         ser4.flush()
 
          i +=1
          print('Current count =')
@@ -143,33 +141,33 @@ if __name__ == '__main__':
                     
                     
                     
-            # if ser3.in_waiting > 0:
+            if ser3.in_waiting > 0:
             
-            #     line3 = ser3.readline().decode("utf-8")
-            
-                
-            #     with open ("Sensor_C.csv","a") as f:
-                    
-            #         writer = csv.writer(f, delimiter=",")
-            #         writer.writerow([time.asctime(),line3])
-            
-                    
-            # if ser4.in_waiting > 0:
-            
-            #     line4 = ser4.readline().decode("utf-8")
+                line3 = ser3.readline().decode("utf-8")
             
                 
-            #     with open ("Sensor_D.csv","a") as f:
+                with open ("Sensor_C.csv","a") as f:
                     
-            #         writer = csv.writer(f, delimiter=",")
-            #         writer.writerow([time.asctime(),line4])
+                    writer = csv.writer(f, delimiter=",")
+                    writer.writerow([time.asctime(),line3])
+            
+                    
+            if ser4.in_waiting > 0:
+            
+                line4 = ser4.readline().decode("utf-8")
+            
+                
+                with open ("Sensor_D.csv","a") as f:
+                    
+                    writer = csv.writer(f, delimiter=",")
+                    writer.writerow([time.asctime(),line4])
             
            
             print('writing data')
             print(line1) 
             print(line2)
-            # print(line3)
-            # print(line4)
+            print(line3)
+            print(line4)
 
          except UnicodeDecodeError:
              pass
@@ -181,11 +179,11 @@ if __name__ == '__main__':
        #######################################
       #######################################   
                 
-         if i == 100: 
+         if i == 500: 
              i = 0
              data = pd.DataFrame()
-             upload_file_list = ['Sensor_A.csv', 'Sensor_B.csv' ]
-            #  upload_file_list = ['Sensor_A.csv', 'Sensor_B.csv', 'Sensor_C.csv','Sensor_D.csv']
+             
+             upload_file_list = ['Sensor_A.csv', 'Sensor_B.csv', 'Sensor_C.csv','Sensor_D.csv']
              
              colnames = ['datetime','vals']
              for upload_file in upload_file_list:
@@ -205,10 +203,10 @@ if __name__ == '__main__':
              
              
 #              data[['ID','CH4','CO2','OH','Cnt']]= data.loc[:,'vals'].str.split(',',4, expand =True)
-             data = data.iloc[:, : 4]
+             data = data.iloc[:, : 6]
              print(data)
 
-             data.columns =['ID','Tmp1','Tmp2','Cnt']
+             data.columns =['strt','ID','Tmp1','Tmp2','Cnt','stp']
              data.reset_index(inplace =True)
              data.set_index(['datetime'], inplace = True)
              data = data[::5]
