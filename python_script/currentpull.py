@@ -14,7 +14,7 @@ gauth = GoogleAuth()
 drive = GoogleDrive(gauth)  
 
 
-path2csv = Path("/media/waselab2/B035-AD85")
+path2csv = Path("/media/waselab2/B035-AD85/NGP")
 csvlist = path2csv.glob("*.csv")
 
 
