@@ -20,9 +20,7 @@ for csv in csvlist:
     ls.append(df)
 
 
-print(ls)
 df = pd.concat(ls, axis=0)
-print(df)
 
 
 
