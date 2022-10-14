@@ -14,7 +14,6 @@ colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]",
 data = pd.DataFrame()
 for csv in csvlist:
     print(csv)
-    ls.append(csv)
     df = pd.read_csv(csv, skiprows=15)
     print(df)
     ls.append(df)
