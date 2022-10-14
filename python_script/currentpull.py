@@ -17,9 +17,9 @@ drive = GoogleDrive(gauth)
 
 
 while(1):
-    print(--)
+    print('--')
     try:
-
+        print('uploading')
         path2csv = Path("/media/waselab2/B035-AD85/NGP")
         csvlist = path2csv.glob("*.csv")
         ls = []
