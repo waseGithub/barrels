@@ -15,12 +15,11 @@ data = pd.DataFrame()
 for csv in csvlist:
     print(csv)
     df = pd.read_csv(csv, skiprows=15)
-    print(df)
     ls.append(df)
 
 
 df = pd.concat(ls, axis=1)
-
+print(df)
 
 
 
