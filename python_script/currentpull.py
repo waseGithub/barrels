@@ -18,8 +18,9 @@ for csv in csvlist:
     df = pd.read_csv(csv, skiprows=14)
     ls.append(df)
 
-print(ls)
 
+df = pd.concat(ls, axis=0)
+print(df)
 
 
 
