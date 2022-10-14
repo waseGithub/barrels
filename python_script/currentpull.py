@@ -1,3 +1,4 @@
+from traceback import print_tb
 import pandas as pd
 import csv
 import os
@@ -17,9 +18,9 @@ drive = GoogleDrive(gauth)
 
 
 while(1):
+    time.sleep(30)
     print('--')
     try:
-        print('uploading')
         path2csv = Path("/media/waselab2/B035-AD85/NGP")
         csvlist = path2csv.glob("*.csv")
         ls = []
@@ -43,6 +44,7 @@ while(1):
 
         upload_online = [uploadfile1]
         for file in upload_online:
+            print('uploading')
         #1_LtZRQVqpSoFI4H-MOBNzH8vX4Yr8tTH
             gfile = drive.CreateFile({'parents': [{'id': '15m_EWk_HQalKw_CTmJsJZdgMkLMntDj6'}]})
             gfile.SetContentFile(file)
