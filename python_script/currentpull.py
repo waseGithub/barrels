@@ -26,17 +26,25 @@ for csv in csvlist:
     df = pd.read_csv(csv, skiprows=15)
     ls.append(df)
 
-    
-
-curr = time.time()
-curr = time.ctime(curr) 
-uploadfile1 = 'power_supply_all_' + str(curr) + '.csv'
-data.to_csv(uploadfile1)
 
 df = pd.concat(ls, axis=0)
 print(df)
 
+curr = time.time()
+curr = time.ctime(curr) 
+uploadfile1 = 'power_supply_all_' + str(curr) + '.csv'
+df.to_csv(uploadfile1)
 
+
+
+upload_online = [uploadfile1]
+for file in upload_online:
+#1_LtZRQVqpSoFI4H-MOBNzH8vX4Yr8tTH
+    gfile = drive.CreateFile({'parents': [{'id': '15m_EWk_HQalKw_CTmJsJZdgMkLMntDj6'}]})
+    gfile.SetContentFile(file)
+    gfile.Upload() # Upload the file.
+    os.remove(file)
+                       
 
 # upload_file = 
 # df = pd.read_csv(upload_file,index_col=0)
