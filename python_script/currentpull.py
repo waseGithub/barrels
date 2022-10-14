@@ -13,7 +13,7 @@ ls = []
 for csv in csvlist:
     print(csv)
     ls.append(csv)
-    df = pd.read_csv(csv,  on_bad_lines='skip')
+    df = pd.read_csv(csv,index_col=0, skiprows=13)
     print(df)
 
 
