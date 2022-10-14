@@ -16,6 +16,7 @@ for csv in csvlist:
     print(csv)
     ls.append(csv)
     df = pd.read_csv(csv, skiprows=14)
+    print(type(df))
     ls.append(df)
 
 
