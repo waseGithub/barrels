@@ -2,7 +2,7 @@ import pandas as pd
 import csv
 import os
 import serial
-import Path 
+from pathlib import Path
 
 
 path2csv = Path("/media/waselab2/B035-AD85")
