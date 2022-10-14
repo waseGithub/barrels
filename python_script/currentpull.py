@@ -20,7 +20,7 @@ for csv in csvlist:
     ls.append(df)
 
 
-df = pd.concat(ls, axis=0)
+df = pd.concat(ls, axis=1)
 
 
 
