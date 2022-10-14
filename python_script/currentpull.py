@@ -15,7 +15,7 @@ data = pd.DataFrame()
 for csv in csvlist:
     print(csv)
     ls.append(csv)
-    df = pd.read_csv(csv, skiprows=14)
+    df = pd.read_csv(csv, skiprows=15)
     print(type(df))
     ls.append(df)
 
