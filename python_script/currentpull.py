@@ -17,7 +17,7 @@ drive = GoogleDrive(gauth)
 
 
 while(1):
-     
+    print(--)
     try:
 
         path2csv = Path("/media/waselab2/B035-AD85/NGP")
