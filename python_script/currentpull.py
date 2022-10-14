@@ -18,7 +18,7 @@ for csv in csvlist:
     ls.append(df)
 
 
-df = pd.concat(ls, axis=1)
+df = pd.concat(ls, axis=0)
 print(df)
 
 
