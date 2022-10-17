@@ -18,7 +18,7 @@ drive = GoogleDrive(gauth)
 
 
 while(1):
-    time.sleep(5)
+    
     print('--')
     try:
         path2csv = Path("/media/waselab2/B035-AD85/NGP")
@@ -30,6 +30,7 @@ while(1):
             print(csv)
             df = pd.read_csv(csv, skiprows=15)
             ls.append(df)
+            os.remove(csv)
 
 
         df = pd.concat(ls, axis=0)
@@ -49,6 +50,8 @@ while(1):
             gfile.SetContentFile(file)
             gfile.Upload() # Upload the file.
             os.remove(file)
+        
+        time.sleep(5)
         
     except ValueError:
         pass
