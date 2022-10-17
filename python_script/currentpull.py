@@ -45,7 +45,6 @@ while(1):
         upload_online = [uploadfile1]
         for file in upload_online:
             print('uploading')
-        #1_LtZRQVqpSoFI4H-MOBNzH8vX4Yr8tTH
             gfile = drive.CreateFile({'parents': [{'id': '15m_EWk_HQalKw_CTmJsJZdgMkLMntDj6'}]})
             gfile.SetContentFile(file)
             gfile.Upload() # Upload the file.
