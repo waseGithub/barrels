@@ -50,8 +50,8 @@ while(1):
             gfile.Upload() # Upload the file.
             os.remove(file)
         
-    except ValueError:
-        pass
+    # except ValueError:
+    #     pass
                         
 
     # upload_file = 
