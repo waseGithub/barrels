@@ -50,7 +50,7 @@ while(1):
             gfile = drive.CreateFile({'parents': [{'id': '15m_EWk_HQalKw_CTmJsJZdgMkLMntDj6'}]})
             gfile.SetContentFile(file)
             gfile.Upload() # Upload the file.
-            os.remove(file)
+#             os.remove(file)
         
         time.sleep(5)
         
