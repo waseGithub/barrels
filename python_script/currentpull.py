@@ -31,7 +31,7 @@ while(1):
             ls.append(df)
             curr = time.time()
             print('last uploaded at:' + str(curr))
-            #os.remove(csv)
+            os.remove(csv)
 
 
         df = pd.concat(ls, axis=0)
