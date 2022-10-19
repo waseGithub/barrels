@@ -32,7 +32,7 @@ while(1):
             ls.append(df)
             now = datetime.datetime.now()
             print('last uploaded at:' + str(now))
-            time.sleep(3000)
+            
 
 
         df = pd.concat(ls, axis=0)
@@ -52,6 +52,7 @@ while(1):
             gfile.SetContentFile(file)
             gfile.Upload() # Upload the file.
             os.remove(file)
+            time.sleep(3000)
         
         time.sleep(5)
         
