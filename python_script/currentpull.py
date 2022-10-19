@@ -19,9 +19,8 @@ drive = GoogleDrive(gauth)
 
 while(1):
     
-    print('--')
     try:
-        path2csv = Path("/media/waselab2/B035-AD85/NGP")
+        path2csv = Path("/media/waselab2/B035-AD85/NGP/logging")
         csvlist = path2csv.glob("*.csv")
         ls = []
         colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
@@ -30,6 +29,8 @@ while(1):
             print(csv)
             df = pd.read_csv(csv, skiprows=15)
             ls.append(df)
+            curr = time.time()
+            print('last uploaded at:' = curr)
             os.remove(csv)
 
 
