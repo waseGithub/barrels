@@ -30,7 +30,7 @@ while(1):
             df = pd.read_csv(csv, skiprows=15)
             ls.append(df)
             curr = time.time()
-            print('last uploaded at:' + curr)
+            print('last uploaded at:' + str(curr))
             os.remove(csv)
 
 
