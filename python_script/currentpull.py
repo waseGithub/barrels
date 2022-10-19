@@ -29,8 +29,8 @@ while(1):
             print(csv)
             df = pd.read_csv(csv, skiprows=15)
             ls.append(df)
-            curr = time.time()
-            print('last uploaded at:' + str(curr))
+            now = datetime.datetime.now()
+            print('last uploaded at:' + str(now))
             time.sleep(3000)
 
 
