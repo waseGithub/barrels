@@ -41,7 +41,7 @@ while(1):
 
         curr = time.time()
         curr = time.ctime(curr) 
-        uploadfile1 = name + str(curr) + '.csv'
+        uploadfile1 = str(curr) + name
         df.to_csv(uploadfile1)
 
 
