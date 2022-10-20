@@ -43,13 +43,15 @@ while(1):
         curr = time.ctime(curr) 
         uploadfile1 = name
         print(uploadfile1)
+        x = uploadfile1.split("/")
+        print(x)
         df.to_csv(uploadfile1)
 
 
 
         upload_online = [uploadfile1]
 
-        x = upload_online.split("/")
+        
         print(x)
 
         for file in upload_online:
