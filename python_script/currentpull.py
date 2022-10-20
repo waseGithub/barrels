@@ -21,7 +21,7 @@ while(1):
     
     print('--')
     try:
-        path2csv = Path("/media/waselab2/B035-AD85/NGP")
+        path2csv = Path("/media/waselab2/B035-AD85/NGP/logging")
         csvlist = path2csv.glob("*.csv")
         ls = []
         names = []
@@ -34,7 +34,7 @@ while(1):
 
 
 
-        df = pd.concat(ls, axis=0)
+        df = ls[0]
         print(df)
 
         curr = time.time()
