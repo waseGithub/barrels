@@ -18,64 +18,63 @@ drive = GoogleDrive(gauth)
 
 
 while(1):
-    
-    print('--')
-    # try:
-    path2csv = Path("/media/waselab2/B035-AD85/NGP/logging")
-    csvlist = path2csv.glob("*.csv")
-    ls = []
-    names = []
-    # colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
-    data = pd.DataFrame()
-    for csv in csvlist:
+
+    try:
+        path2csv = Path("/media/waselab2/B035-AD85/NGP/logging")
+        csvlist = path2csv.glob("*.csv")
+        ls = []
+        names = []
+        # colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
+        data = pd.DataFrame()
+        for csv in csvlist:
+            
+            # df = pd.read_csv(csv, on_bad_lines='skip')
+            # print("reading")
+
+            # ls.append(df)
+            names.append(str(csv))
+
         
-        # df = pd.read_csv(csv, on_bad_lines='skip')
-        # print("reading")
-
-        # ls.append(df)
-        names.append(str(csv))
-
-    
-    
-    
-
-    
-
-
-
-
-    # df = ls[0]
-    name = names[0]
-    original = r''+ name
-    # print(df)
-
-    curr = time.time()
-    curr = time.ctime(curr) 
-    uploadfile1 = name
-    x = uploadfile1.split("/")
-    uploadfile = x[-1]
-    uploadfile = "power_data" + "-" + curr + "-" + uploadfile
-    print(uploadfile)
-    shutil.copyfile(original, uploadfile)
-
-
-
-    upload_online = [uploadfile]
-
-    
-    print(x)
-
-    for file in upload_online:
-        print('uploading')
-        gfile = drive.CreateFile({'parents': [{'id': '15m_EWk_HQalKw_CTmJsJZdgMkLMntDj6'}]})
-        gfile.SetContentFile(file)
-        gfile.Upload() # Upload the file.
-        os.remove(file)
-    
-    time.sleep(5)
         
-    # except ValueError:
-    #     pass
+        
+
+        
+
+
+
+
+        # df = ls[0]
+        name = names[0]
+        original = r''+ name
+        # print(df)
+
+        curr = time.time()
+        curr = time.ctime(curr) 
+        uploadfile1 = name
+        x = uploadfile1.split("/")
+        uploadfile = x[-1]
+        uploadfile = "power_data" + "-" + curr + "-" + uploadfile
+        print(uploadfile)
+        shutil.copyfile(original, uploadfile)
+
+
+
+        upload_online = [uploadfile]
+
+        
+        print(x)
+
+        for file in upload_online:
+            print('uploading')
+            gfile = drive.CreateFile({'parents': [{'id': '15m_EWk_HQalKw_CTmJsJZdgMkLMntDj6'}]})
+            gfile.SetContentFile(file)
+            gfile.Upload() # Upload the file.
+            os.remove(file)
+        
+        time.sleep(5000)
+        
+    except ValueError:
+        pass
                         
 
     # upload_file = 
