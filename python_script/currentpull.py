@@ -47,7 +47,7 @@ while(1):
         # curr = time.time()
         # curr = time.ctime(curr) 
         # uploadfile1 = 'power_supply_all_' + str(curr) + '.csv'
-        df.to_csv(name)
+        df.to_csv(csv)
 
 
 
