@@ -30,6 +30,7 @@ while(1):
             df = pd.read_csv(csv)
             print(df)
             ls.append(df)
+            time.sleep(5000)
 
 
         df = pd.concat(ls, axis=0)
