@@ -41,15 +41,16 @@ while(1):
 
         curr = time.time()
         curr = time.ctime(curr) 
-        uploadfile1 = str(curr) + '-' + name
+        uploadfile1 = name
         x = uploadfile1.split("/")
         print(x[-1])
         uploadfile = x[-1]
-        df.to_csv(x[-1])
+        uploadfile = curr + "-" + uploadfile
+        df.to_csv(uploadfile)
 
 
 
-        upload_online = [uploadfile]
+        upload_online = [uploadfile1]
 
         
         print(x)
