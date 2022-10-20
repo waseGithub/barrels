@@ -15,31 +15,28 @@ gauth = GoogleAuth()
 drive = GoogleDrive(gauth)  
 
 
-#current pull with cleaning, removes datatime information at top of file and renames the file
+
 
 while(1):
-
+    
+    print('--')
     try:
-        path2csv = Path("/media/waselab2/B035-AD85/NGP/logging")
+        path2csv = Path("/media/waselab2/B035-AD85/NGP")
         csvlist = path2csv.glob("*.csv")
         ls = []
         colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
         data = pd.DataFrame()
-        i = 0 
-        name = ""
         for csv in csvlist:
-            df = pd.read_csv(csv)
+            df = pd.read_csv(csv, skiprows=15)
             ls.append(df)
-            i = i + 1
-            name = csv
-         
-        print(ls)
+
+
         df = pd.concat(ls, axis=0)
         print(df)
+
         curr = time.time()
         curr = time.ctime(curr) 
-        uploadfile1 = str(name) + str(curr) + '.csv'
-        print(uploadfile1)
+        uploadfile1 = 'power_supply_all_' + str(curr) + '.csv'
         df.to_csv(uploadfile1)
 
 
@@ -52,7 +49,7 @@ while(1):
             gfile.Upload() # Upload the file.
             os.remove(file)
         
-        time.sleep(5)
+        time.sleep(500)
         
     except ValueError:
         pass
