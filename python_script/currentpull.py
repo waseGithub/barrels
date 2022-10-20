@@ -50,7 +50,7 @@ while(1):
 
 
 
-        upload_online = [uploadfile1]
+        upload_online = [uploadfile]
 
         
         print(x)
