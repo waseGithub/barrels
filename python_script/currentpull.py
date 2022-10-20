@@ -34,7 +34,7 @@ while(1):
 
 
 
-        df = ls[0]
+        df = pd.concat(ls, axis=0)
         print(df)
 
         curr = time.time()
