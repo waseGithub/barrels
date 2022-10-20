@@ -28,6 +28,7 @@ while(1):
         data = pd.DataFrame()
         for csv in csvlist:
             df = pd.read_csv(csv)
+            print(df)
             ls.append(df)
 
 
