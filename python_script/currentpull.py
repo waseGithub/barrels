@@ -28,11 +28,10 @@ while(1):
         i = 0 
         name = ""
         for csv in csvlist:
-            if i == 0:
-                df = pd.read_csv(csv)
-                ls.append(df)
-                i = i + 1
-                name = csv
+            df = pd.read_csv(csv)
+            ls.append(df)
+            i = i + 1
+            name = csv
          
         print(ls)
         df = pd.concat(ls, axis=0)
