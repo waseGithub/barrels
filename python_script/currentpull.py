@@ -73,7 +73,7 @@ while(1):
         
         time.sleep(5000)
         
-    except ValueError:
+    except ValueError and IndexError:
         pass
                         
 
