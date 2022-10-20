@@ -29,7 +29,7 @@ while(1):
     data = pd.DataFrame()
     for csv in csvlist:
         
-        df = pd.read_csv(csv, keep_default_na=True)
+        df = pd.read_csv(csv, on_bad_lines='skip')
         print("reading")
 
         ls.append(df)
