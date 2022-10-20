@@ -28,29 +28,25 @@ while(1):
         # colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
         data = pd.DataFrame()
         for csv in csvlist:
-            
-            df = pd.read_csv(csv)
-            ls.append(df)
+            # df = pd.read_csv(csv)
+            # ls.append(df)
             names.append(str(csv))
 
 
 
-        df = ls[0]
         name = names[0]
-        print(df)
-
         curr = time.time()
         curr = time.ctime(curr) 
-        uploadfile1 = name
-        x = uploadfile1.split("/")
-        uploadfile = x[-1]
-        uploadfile = "power_data" + "-" + curr + "-" + uploadfile
-        print(uploadfile)
-        df.to_csv(uploadfile)
+        # uploadfile1 = name
+        # x = uploadfile1.split("/")
+        # uploadfile = x[-1]
+        # uploadfile = "power_data" + "-" + curr + "-" + uploadfile
+        # print(uploadfile)
+        # df.to_csv(uploadfile)
 
 
 
-        upload_online = [uploadfile]
+        upload_online = [name]
 
         
         print(x)
