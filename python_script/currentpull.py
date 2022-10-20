@@ -37,16 +37,16 @@ while(1):
         name = names[0]
         curr = time.time()
         curr = time.ctime(curr) 
-        # uploadfile1 = name
-        # x = uploadfile1.split("/")
-        # uploadfile = x[-1]
-        # uploadfile = "power_data" + "-" + curr + "-" + uploadfile
+        uploadfile1 = name
+        x = uploadfile1.split("/")
+        uploadfile = x[-1]
+        uploadfile = "power_data" + "-" + curr + "-" + uploadfile
         # print(uploadfile)
         # df.to_csv(uploadfile)
 
 
 
-        upload_online = [name]
+        upload_online = [uploadfile]
 
         
         # print(x)
