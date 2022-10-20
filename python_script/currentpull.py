@@ -28,9 +28,9 @@ while(1):
         # colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
         data = pd.DataFrame()
         for csv in csvlist:
-            
-            df = pd.read_csv(csv, keep_default_na=False)
             print("reading")
+            df = pd.read_csv(csv, keep_default_na=False)
+
             ls.append(df)
             names.append(str(csv))
 
