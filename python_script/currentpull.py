@@ -30,8 +30,10 @@ while(1):
         for csv in csvlist:
             
             df = pd.read_csv(csv, keep_default_na=False)
+            print("reading")
             ls.append(df)
             names.append(str(csv))
+
 
 
 
