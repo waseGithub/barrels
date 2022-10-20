@@ -33,6 +33,7 @@ while(1):
                 ls.append(df)
                 # os.remove(csv)
                 i += 1
+                time.sleep(5000)
         csv = ls[0]
         df = pd.concat(ls, axis=0)
         print(df)
