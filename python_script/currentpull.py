@@ -5,7 +5,6 @@ import os
 import serial
 from pathlib import Path
 import time
-import datetime
 
 import re
 import subprocess
@@ -16,12 +15,13 @@ gauth = GoogleAuth()
 drive = GoogleDrive(gauth)  
 
 
-
+#current pull with cleaning, removes datatime information at top of file and renames the file
 
 while(1):
     
+    print('--')
     try:
-        path2csv = Path("/media/waselab2/B035-AD85/NGP/logging")
+        path2csv = Path("/media/waselab2/B035-AD85/NGP")
         csvlist = path2csv.glob("*.csv")
         ls = []
         colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
@@ -30,9 +30,7 @@ while(1):
             print(csv)
             df = pd.read_csv(csv, skiprows=15)
             ls.append(df)
-            now = datetime.datetime.now()
-            print('last uploaded at:' + str(now))
-            
+            os.remove(csv)
 
 
         df = pd.concat(ls, axis=0)
@@ -52,7 +50,6 @@ while(1):
             gfile.SetContentFile(file)
             gfile.Upload() # Upload the file.
             os.remove(file)
-            time.sleep(3000)
         
         time.sleep(5)
         
