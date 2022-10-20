@@ -41,7 +41,7 @@ while(1):
 
         curr = time.time()
         curr = time.ctime(curr) 
-        uploadfile1 = name
+        uploadfile1 = str(curr) + '-' + name
         x = uploadfile1.split("/")
         print(x[-1])
         uploadfile = x[-1]
