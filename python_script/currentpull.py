@@ -18,10 +18,9 @@ drive = GoogleDrive(gauth)
 #current pull with cleaning, removes datatime information at top of file and renames the file
 
 while(1):
-    
-    print('--')
+
     try:
-        path2csv = Path("/media/waselab2/B035-AD85/NGP")
+        path2csv = Path("/media/waselab2/B035-AD85/NGP/logging")
         csvlist = path2csv.glob("*.csv")
         ls = []
         colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
