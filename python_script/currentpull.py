@@ -26,19 +26,19 @@ while(1):
         colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
         data = pd.DataFrame()
         i = 0 
+        name = ""
         for csv in csvlist:
             if i == 0:
                 df = pd.read_csv(csv)
                 ls.append(df)
                 i = i + 1
+                name = csv
 
 
         df = pd.concat(ls, axis=0)
-        print(df)
-
         curr = time.time()
         curr = time.ctime(curr) 
-        uploadfile1 = str(csv) + str(curr) + '.csv'
+        uploadfile1 = str(name) + str(curr) + '.csv'
         print(uploadfile1)
         df.to_csv(uploadfile1)
 
