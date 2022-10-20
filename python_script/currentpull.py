@@ -36,7 +36,7 @@ while(1):
         names.append(str(csv))
 
     
-    Original = r'original path where the file is currently stored\file name.file extension'
+    
     
 
     
@@ -46,6 +46,8 @@ while(1):
 
     # df = ls[0]
     name = names[0]
+    Original = r + name
+    
     # print(df)
 
     curr = time.time()
