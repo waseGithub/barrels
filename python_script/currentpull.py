@@ -48,6 +48,10 @@ while(1):
 
 
         upload_online = [uploadfile1]
+
+        x = upload_online.split("/")
+        print(x)
+
         for file in upload_online:
             print('uploading')
             gfile = drive.CreateFile({'parents': [{'id': '15m_EWk_HQalKw_CTmJsJZdgMkLMntDj6'}]})
