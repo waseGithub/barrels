@@ -44,7 +44,7 @@ while(1):
         uploadfile1 = name
         x = uploadfile1.split("/")
         uploadfile = x[-1]
-        uploadfile = "power_data_" + " -" + curr + "-" + uploadfile
+        uploadfile = "power_data_" + "-" + curr + "-" + uploadfile
         print(uploadfile)
         df.to_csv(uploadfile)
 
