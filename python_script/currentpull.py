@@ -29,6 +29,7 @@ while(1):
         name = ""
         for csv in csvlist:
             if i == 0:
+                print(csv)
                 df = pd.read_csv(csv)
                 ls.append(df)
                 i = i + 1
