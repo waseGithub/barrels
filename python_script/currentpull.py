@@ -44,7 +44,7 @@ while(1):
         uploadfile1 = name
         print(uploadfile1)
         x = uploadfile1.split("/")
-        print(x)
+        print(x[-1])
         df.to_csv(uploadfile1)
 
 
