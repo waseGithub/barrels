@@ -19,35 +19,41 @@ drive = GoogleDrive(gauth)
 
 while(1):
     
-
+    print('--')
     try:
-        path2csv = Path("/media/waselab2/B035-AD85/NGP/logging")
+        path2csv = Path("/media/waselab2/B035-AD85/NGP")
         csvlist = path2csv.glob("*.csv")
         ls = []
-        # colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
+        colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
+        data = pd.DataFrame()
         i = 0 
         for csv in csvlist:
             if i == 0:
+                print(csv)
                 df = pd.read_csv(csv)
                 ls.append(df)
-                # os.remove(csv)
-                i = i +1
-                time.sleep(5000)
-        csv = ls[0]
+                i = i + 1
+
+
         df = pd.concat(ls, axis=0)
         print(df)
 
         curr = time.time()
         curr = time.ctime(curr) 
-        file = str(csv) + str(curr) + '.csv'
-        df.to_csv(csv)
-        print('uploading')
-        gfile = drive.CreateFile({'parents': [{'id': '15m_EWk_HQalKw_CTmJsJZdgMkLMntDj6'}]})
-        gfile.SetContentFile(file)
-        gfile.Upload() # Upload the file.
-        os.remove(file)
+        uploadfile1 = str(csv) + str(curr) + '.csv'
+        df.to_csv(uploadfile1)
+
+
+
+        upload_online = [uploadfile1]
+        for file in upload_online:
+            print('uploading')
+            gfile = drive.CreateFile({'parents': [{'id': '15m_EWk_HQalKw_CTmJsJZdgMkLMntDj6'}]})
+            gfile.SetContentFile(file)
+            gfile.Upload() # Upload the file.
+            os.remove(file)
         
-        time.sleep(5000)
+        time.sleep(5)
         
     except ValueError:
         pass
