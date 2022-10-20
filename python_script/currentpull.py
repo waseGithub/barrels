@@ -23,8 +23,9 @@ while(1):
     try:
         path2csv = Path("/media/waselab2/B035-AD85/NGP")
         csvlist = path2csv.glob("*.csv")
-        csv = csvlist[0]
-        df = pd.read_csv(csv)
+        # csv = csvlist[0]
+        # df = pd.read_csv(csv)
+        print(csvlist)
 
 
 
