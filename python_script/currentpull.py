@@ -5,7 +5,7 @@ import os
 import serial
 from pathlib import Path
 import time
-
+import shutil
 import re
 import subprocess
 
@@ -29,11 +29,17 @@ while(1):
     data = pd.DataFrame()
     for csv in csvlist:
         
-        df = pd.read_csv(csv, on_bad_lines='skip')
-        print("reading")
+        # df = pd.read_csv(csv, on_bad_lines='skip')
+        # print("reading")
 
-        ls.append(df)
+        # ls.append(df)
         names.append(str(csv))
+
+    
+    Original = r'original path where the file is currently stored\file name.file extension'
+    
+
+    
 
 
 
@@ -49,7 +55,7 @@ while(1):
     uploadfile = x[-1]
     uploadfile = "power_data" + "-" + curr + "-" + uploadfile
     print(uploadfile)
-    df.to_csv(uploadfile)
+    shutil.copyfile(original, uploadfile)
 
 
 
