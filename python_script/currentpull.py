@@ -42,30 +42,23 @@ while(1):
         #         name = csv
 
 
-        # df = pd.concat(ls, axis=0)
-        print(df)
-
-        # curr = time.time()
-        # curr = time.ctime(curr) 
-        # uploadfile1 = 'power_supply_all_' + str(curr) + '.csv'
-        df.to_csv(csv)
+    #     print(df)
+    #     df.to_csv(csv)
 
 
 
-        upload_online = [uploadfile1]
-        for file in upload_online:
-            print('uploading')
-            gfile = drive.CreateFile({'parents': [{'id': '15m_EWk_HQalKw_CTmJsJZdgMkLMntDj6'}]})
-            gfile.SetContentFile(file)
-            gfile.Upload() # Upload the file.
-            os.remove(file)
+    #     upload_online = [uploadfile1]
+    #     for file in upload_online:
+    #         print('uploading')
+    #         gfile = drive.CreateFile({'parents': [{'id': '15m_EWk_HQalKw_CTmJsJZdgMkLMntDj6'}]})
+    #         gfile.SetContentFile(file)
+    #         gfile.Upload() # Upload the file.
+    #         os.remove(file)
         
-        time.sleep(5)
+    #     time.sleep(5)
         
     except ValueError:
         pass
                         
 
-    # upload_file = 
-    # df = pd.read_csv(upload_file,index_col=0)
 
