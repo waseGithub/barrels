@@ -25,11 +25,11 @@ while(1):
         csvlist = path2csv.glob("*.csv")
         ls = []
         names = []
-        colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
+        # colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
         data = pd.DataFrame()
         for csv in csvlist:
             
-            df = pd.read_csv(csv, skiprows=15)
+            df = pd.read_csv(csv)
             ls.append(df)
             names.append(str(csv))
 
