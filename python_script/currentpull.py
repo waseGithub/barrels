@@ -36,6 +36,7 @@ while(1):
 
 
         df = pd.concat(ls, axis=0)
+        print(df)
         curr = time.time()
         curr = time.ctime(curr) 
         uploadfile1 = str(name) + str(curr) + '.csv'
