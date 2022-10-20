@@ -28,7 +28,6 @@ while(1):
         i = 0 
         for csv in csvlist:
             if i == 0:
-                print(csv)
                 df = pd.read_csv(csv)
                 ls.append(df)
                 i = i + 1
@@ -40,6 +39,7 @@ while(1):
         curr = time.time()
         curr = time.ctime(curr) 
         uploadfile1 = str(csv) + str(curr) + '.csv'
+        print(uploadfile1)
         df.to_csv(uploadfile1)
 
 
