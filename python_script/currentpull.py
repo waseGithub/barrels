@@ -44,11 +44,12 @@ while(1):
         uploadfile1 = name
         x = uploadfile1.split("/")
         print(x[-1])
+        uploadfile = x[-1]
         df.to_csv(x[-1])
 
 
 
-        upload_online = [uploadfile1]
+        upload_online = [uploadfile]
 
         
         print(x)
