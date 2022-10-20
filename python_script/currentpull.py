@@ -31,15 +31,17 @@ while(1):
             
             df = pd.read_csv(csv, skiprows=15)
             ls.append(df)
+            names.append(str(csv))
 
 
 
         df = ls[0]
+        name = names[0]
         print(df)
 
         curr = time.time()
         curr = time.ctime(curr) 
-        uploadfile1 = 'power_supply_all_' + str(curr) + '.csv'
+        uploadfile1 = name + str(curr) + '.csv'
         df.to_csv(uploadfile1)
 
 
