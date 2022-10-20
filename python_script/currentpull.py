@@ -23,23 +23,31 @@ while(1):
     try:
         path2csv = Path("/media/waselab2/B035-AD85/NGP")
         csvlist = path2csv.glob("*.csv")
-        ls = []
-        colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
-        data = pd.DataFrame()
-        for csv in csvlist:
-            print(csv)
-            df = pd.read_csv(csv, skiprows=15)
-            ls.append(df)
-            os.remove(csv)
+        csv = csvlist[0]
+        df = pd.read_csv(csv)
 
 
-        df = pd.concat(ls, axis=0)
+
+        # colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
+        # data = pd.DataFrame()
+        # i = 0 
+        # for csv in csvlist:
+        #     if i == 0:
+        #         print(csv)
+        #         df = pd.read_csv(csv)
+        #         ls.append(df)
+        #         # os.remove(csv)
+        #         i += 1
+        #         name = csv
+
+
+        # df = pd.concat(ls, axis=0)
         print(df)
 
-        curr = time.time()
-        curr = time.ctime(curr) 
-        uploadfile1 = 'power_supply_all_' + str(curr) + '.csv'
-        df.to_csv(uploadfile1)
+        # curr = time.time()
+        # curr = time.ctime(curr) 
+        # uploadfile1 = 'power_supply_all_' + str(curr) + '.csv'
+        df.to_csv(name)
 
 
 
