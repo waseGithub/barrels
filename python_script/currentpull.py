@@ -43,9 +43,9 @@ while(1):
         curr = time.ctime(curr) 
         uploadfile1 = name
         x = uploadfile1.split("/")
-        print(x[-1])
         uploadfile = x[-1]
         uploadfile = curr + "-" + uploadfile
+        print(uploadfile)
         df.to_csv(uploadfile)
 
 
