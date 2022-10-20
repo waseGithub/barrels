@@ -46,8 +46,7 @@ while(1):
 
     # df = ls[0]
     name = names[0]
-    Original = r + name
-    
+    Original = r''+ name
     # print(df)
 
     curr = time.time()
