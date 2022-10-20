@@ -49,7 +49,7 @@ while(1):
         upload_online = [name]
 
         
-        print(x)
+        # print(x)
 
         for file in upload_online:
             print('uploading')
