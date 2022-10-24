@@ -119,7 +119,7 @@ if __name__ == '__main__':
          print(i)
          try:
             if ser1.in_waiting > 0:
-            
+                
                 line1 = ser1.readline().decode("utf-8")
                 
                 
@@ -127,6 +127,7 @@ if __name__ == '__main__':
                     
                     writer = csv.writer(f, delimiter=",")
                     writer.writerow([time.asctime(),line1])
+
                     
 
             if ser2.in_waiting > 0:
@@ -164,9 +165,13 @@ if __name__ == '__main__':
             
            
             print('writing data')
+            print(Megas[0])
             print(line1) 
+            print(Megas[1])
             print(line2)
+            print(Megas[2])
             print(line3)
+            print(Megas[3])
             print(line4)
 
          except UnicodeDecodeError:
