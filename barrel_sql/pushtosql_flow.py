@@ -38,7 +38,7 @@ def replace_negative_with_zero(value):
 
 data_gas = pd.DataFrame()
 data_tank = pd.DataFrame()
-upload_file_list = ['barrel_sql/Sensor_A.csv','barrel_sql/Sensor_B.csv', 'barrel_sql/Sensor_C.csv','barrel_sql/Sensor_D.csv',]
+upload_file_list = ['/home/waselab2/Documents/barrels/barrel_sql/Sensor_A.csv','/home/waselab2/Documents/barrels/barrel_sql/Sensor_B.csv', '/home/waselab2/Documents/barrels/barrel_sql/Sensor_C.csv','/home/waselab2/Documents/barrels/barrel_sql/Sensor_D.csv',]
 
 colnames = ['datetime','vals']
 for upload_file in upload_file_list:
