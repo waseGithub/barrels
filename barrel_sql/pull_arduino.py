@@ -111,6 +111,7 @@ if __name__ == '__main__':
          try:
             print('logging')
 
+
             if ser1.in_waiting > 0:
             
                 line1 = ser1.readline().decode("utf-8")
@@ -155,16 +156,7 @@ if __name__ == '__main__':
                     writer = csv.writer(f, delimiter=",")
                     writer.writerow([time.asctime(),line4])
             
-#            if ser5.in_waiting > 0:
-#                try:
-#                    line5 = ser5.readline().decode("utf-8")
-#                except SerialException:
-#                    continue
-#                
-#                with open ("Sensor_E.csv","a") as f:
-#                    
-#                    writer = csv.writer(f, delimiter=",")
-#                    writer.writerow([time.asctime(),line5])
+            time.sleep(10)
             print('writing gas data')
             print(line1)
             print(line2)
