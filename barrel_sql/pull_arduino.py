@@ -93,7 +93,7 @@ print("channels correct")
 time.sleep(5)
 
 if __name__ == '__main__':
-    print('logging')
+   
     
    
    
@@ -105,11 +105,12 @@ if __name__ == '__main__':
     ser3.flush()
     ser4.flush()
 
-
-    start_time = datetime.datetime.now()
     while True:
+         
       
          try:
+            print('logging')
+
             if ser1.in_waiting > 0:
             
                 line1 = ser1.readline().decode("utf-8")
