@@ -5,6 +5,7 @@ import csv
 import os
 import pandas as pd
 import numpy
+import datetime 
 
 
 import serial.tools.list_ports
@@ -92,7 +93,7 @@ ser2 = serial.Serial(str(Megas[1]),  9600, timeout = 25)
 ser3 = serial.Serial(str(Megas[2]),  9600, timeout = 25)
 ser4 = serial.Serial(str(Megas[3]),  9600, timeout = 25)
 print("channels correct")
-    
+start_time = datetime.datetime.now()
 time.sleep(5)
 
 if __name__ == '__main__':
@@ -114,6 +115,7 @@ if __name__ == '__main__':
          ser3.flush()
          ser4.flush()
          print('sql script')
+         print('Operating time is: ' (datetime.now() - start_time))
          i +=1
          print('Current count =')
          print(i)
