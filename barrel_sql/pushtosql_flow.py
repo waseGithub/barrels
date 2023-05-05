@@ -73,6 +73,7 @@ data_gas = data_gas.sort_values(by='ID')
 
 
 data_gas = data_gas[data_gas['ID'].isin(['1', '2', '3', '4'])]
+data_gas = data_gas.apply(pd.to_numeric)
 data_gas.reset_index(inplace=True)
 data_gas.set_index(['datetime', 'ID'], inplace=True)
 data_gas = data_gas.applymap(replace_string_with_zero)
