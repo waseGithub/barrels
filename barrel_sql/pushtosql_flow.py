@@ -60,62 +60,9 @@ data_gas = data_gas.drop(columns=data_gas.columns[0])
 data_gas.columns =['ID','Temp1','Temp2','Cnt']
 
 
-data_gas.reset_index(inplace =True)
-data_gas.set_index(['datetime'], inplace = True)
 
 
 data_gas = data_gas.sort_values(by='ID')
-data_gas.to_csv('Gasfile.csv')
-
-# try:
-#     data_tank.columns =['Sensor_value','EQ_waste_height_mm','EQ_volume_%']
-# except ValueError:
-#     pass
-
-# curr = time.time()
-# curr = time.ctime(curr) 
-# uploadfile1 = 'sensor_all' + '.csv'
-# data_gas.to_csv(uploadfile1)
-
-
-
-
-            
-
-
-
-
-
-
-
-
-data = pd.read_csv ('sensor_all.csv')
-#data = pd.read_csv (r'/home/farscopestudent/Documents/WASE/wase-cabinet/flowmeter_push.csv')  
-df_biogasflow = pd.DataFrame(data)
-
-
-
-
-
-
-df_biogasflow['datetime'] = pd.to_datetime(df_biogasflow['datetime'])
-df_biogasflow = df_biogasflow[df_biogasflow['ID'].isin([1, 2, 3, 4])]
-
-
-df_biogasflow.set_index(['datetime', 'ID'], inplace=True)
-
-
-
-
-# df_biogasflow = df_biogasflow.applymap(replace_string_with_zero)
-
-# df_biogasflow = df_biogasflow.applymap(replace_negative_with_zero)
-
-
-
-
-
-# df_biogasflow = df_biogasflow.groupby(level='ID').resample('30T', level=0).max()
 
 
 
@@ -125,38 +72,47 @@ df_biogasflow.set_index(['datetime', 'ID'], inplace=True)
 
 
 
-
-
-# print(df_biogasflow)
-# df_biogasflow.reset_index(inplace=True)
-# # df_biogasflow['datetime'] = df_biogasflow['datetime'].dt.strftime('%Y-%m-%d %H:%M:%S')
-
-
-
-
+data_gas = data_gas[data_gas['ID'].isin(['1', '2', '3', '4'])]
+data_gas.reset_index(inplace=True)
+data_gas.set_index(['datetime', 'ID'], inplace=True)
+data_gas = data_gas.applymap(replace_string_with_zero)
+data_gas = data_gas.applymap(replace_negative_with_zero)
+data_gas = data_gas.groupby(level='ID').resample('30T', level=0).max()
 
 
 
 
 
-# cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='saniWASE_datasets')
+data_gas.reset_index(inplace=True)
+data_gas['datetime'] = data_gas['datetime'].dt.strftime('%Y-%m-%d %H:%M:%S')
+
+
+
+
+print(data_gas)
+
+
+
+
+
+cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='Barrels_datasets')
 
 
  
 
-# cursor = cnx.cursor()
-# cols = "`,`".join([str(i) for i in df_biogasflow.columns.tolist()])
-# for i,row in df_biogasflow.iterrows():
-#     sql = "INSERT INTO `flowmeter_temp` (`" +cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
-#     cursor.execute(sql, tuple(row))
-#     cnx.commit()
+cursor = cnx.cursor()
+cols = "`,`".join([str(i) for i in data_gas.columns.tolist()])
+for i,row in data_gas.iterrows():
+    sql = "INSERT INTO `flowmeter_temperature` (`" +cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
+    cursor.execute(sql, tuple(row))
+    cnx.commit()
 
-# # os.remove(r'/home/wase-cabinet/wase-cabinet/flowmeter_push.csv')
+# os.remove(r'/home/wase-cabinet/wase-cabinet/flowmeter_push.csv')
 
 
-# cnx.close()
+cnx.close()
 
-# print('pushed')
+print('pushed')
 
 # os.remove('Sensor_A.csv')
 # os.remove('ensor_B.csv')
