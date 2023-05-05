@@ -115,7 +115,8 @@ if __name__ == '__main__':
          ser3.flush()
          ser4.flush()
          print('sql script')
-         print('Operating time is: ' (datetime.now() - start_time))
+         time_diff = datetime.datetime.now() - start_time
+         print('Operating time is: ', time_diff)
          i +=1
          print('Current count =')
          print(i)
