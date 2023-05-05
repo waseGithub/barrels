@@ -175,6 +175,7 @@ if __name__ == '__main__':
             print(line4)
 
          except UnicodeDecodeError:
+             pass
 
                 
   
