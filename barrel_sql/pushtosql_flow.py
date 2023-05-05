@@ -78,7 +78,14 @@ data_gas.reset_index(inplace=True)
 data_gas.set_index(['datetime', 'ID'], inplace=True)
 data_gas = data_gas.applymap(replace_string_with_zero)
 data_gas = data_gas.applymap(replace_negative_with_zero)
-data_gas = data_gas.groupby(level='ID').resample('30T', level=0).max()
+
+
+
+
+data_gas['Cnt'] = data_gas['Cnt'].groupby(level='ID').resample('30T', level=0).max()
+data_gas['Temp1'] = data_gas['Temp1'].groupby(level='ID').resample('30T', level=0).max()
+data_gas['Temp2'] = data_gas['Temp2'].groupby(level='ID').resample('30T', level=0).max()
+
 
 
 
