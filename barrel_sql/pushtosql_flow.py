@@ -16,6 +16,8 @@ import serial.tools.list_ports
 import re
 
 
+print('starting updated code')
+
 
 
 def replace_string_with_zero(value):
