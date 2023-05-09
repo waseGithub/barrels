@@ -16,7 +16,7 @@ import serial.tools.list_ports
 import re
 
 
-print('starting updated code')
+print('starting updated push')
 
 
 
