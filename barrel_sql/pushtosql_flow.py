@@ -98,14 +98,14 @@ cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.1
 
 # Insert data into the `flowmeter_temperature` table
 cols = "`,`".join(data_gas.columns.tolist())
-for i, row in data_gas.iterrows():
+for i, row in my_dataframe.iterrows():
     values = []
     for value in row:
-        if np.isnan(value):
+        if pd.isna(value):
             values.append(None)
         else:
             values.append(value)
-    sql = "INSERT INTO `flowmeter_temperature` (`" + cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
+    sql = "INSERT INTO `mytable` (`col1`, `col2`, `col3`) VALUES (%s, %s, %s)"
     cursor.execute(sql, tuple(values))
     cnx.commit()
 
