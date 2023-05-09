@@ -98,7 +98,7 @@ cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.1
 
 # Insert data into the `flowmeter_temperature` table
 cols = "`,`".join(data_gas.columns.tolist())
-for i, row in my_dataframe.iterrows():
+for i, row in data_gas.iterrows():
     values = []
     for value in row:
         if pd.isna(value):
