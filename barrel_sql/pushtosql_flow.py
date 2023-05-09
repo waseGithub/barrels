@@ -106,12 +106,11 @@ for i, row in data_gas.iterrows():
         else:
             values.append(value)
     sql = "INSERT INTO `mytable` (`col1`, `col2`, `col3`) VALUES (%s, %s, %s)"
-    cursor.execute(sql, tuple(values))
+    cnx.execute(sql, tuple(values))
     cnx.commit()
 
 # Close the cursor and connection
-cursor.close()
-cnx.close()
+cursor.close()cnx.close()
 
 print('pushed')
 
