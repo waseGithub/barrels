@@ -130,7 +130,7 @@ power_df = power_df.rename(columns={"V": "voltageV", "A": "currentA", "P": "powe
 print(power_df)
 
 
-power_df.to_csv('power_df.csv')
+power_df.to_csv('power_df.csv')s
 
 
 
@@ -145,28 +145,28 @@ power_df.to_csv('power_df.csv')
 
 
 
-# cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='cabinet_datasets')
+cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='Barrels_datasets')
 
 
-# cursor = cnx.cursor()
-# cols = "`,`".join([str(i) for i in power_df.columns.tolist()])
-# for i,row in power_df.iterrows():
-#     sql = "INSERT INTO `rs_current_data` (`" +cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
-#     cursor.execute(sql, tuple(row))
-#     cnx.commit()
+cursor = cnx.cursor()
+cols = "`,`".join([str(i) for i in power_df.columns.tolist()])
+for i,row in power_df.iterrows():
+    sql = "INSERT INTO `rs_current_data` (`" +cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
+    cursor.execute(sql, tuple(row))
+    cnx.commit()
 
-# # Create cursor
-# my_cursor = cnx.cursor()
+# Create cursor
+my_cursor = cnx.cursor()
 
 
-# # # Execute Query
-# # my_cursor.execute("SELECT * from flowmeter")
+# # Execute Query
+# my_cursor.execute("SELECT * from flowmeter")
 
-# # # Fetch the records
-# # result = my_cursor.fetchall()
+# # Fetch the records
+# result = my_cursor.fetchall()
 
-# # for i in result:
-# #     print(i)
+# for i in result:
+#     print(i)
 
-# # Close the connection
-# cnx.close()
+# Close the connection
+cnx.close()
