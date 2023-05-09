@@ -31,32 +31,32 @@ def format_rs_csv(csvdest):
     print(csvlist)
 
    
-    csv = csvlist[0]
+    # csv = csvlist[0]
 
-    df_header = pd.read_csv(csv, nrows=14, names=['attribute', 'data'])
-    colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
-    df = pd.read_csv(csv, skiprows=16, names=colnames)
+    # df_header = pd.read_csv(csv, nrows=14, names=['attribute', 'data'])
+    # colnames = ["Timestamp","U1[V]","I1[A]","P1[W]","U2[V]","I2[A]","P2[W]","U3[V]","I3[A]","P3[W]","U4[V]","I4[A]","P4[W]"]
+    # df = pd.read_csv(csv, skiprows=16, names=colnames)
 
-    start_time = df_header[df_header['attribute'] == '#Start Time'].data.values[0]
-    start_date = df_header[df_header['attribute'] == '#Date'].data.values[0]
-    start_datetime = str(str(start_date) + " " + str(start_time))
-    increment = df_header[df_header['attribute'] == '#Logging Interval[s]'].data.values[0]
-    increment = int(float(increment))/ 60
-    count_row = df.shape[0] 
-    duration = increment * (count_row)
-    end_datetime= pd.to_datetime(start_datetime) + pd.to_timedelta(duration,'m')
-        # print(duration)
-        # print(count_row)    
-        # print("start time", start_datetime)
-        # print("end time", end_datetime)
+    # start_time = df_header[df_header['attribute'] == '#Start Time'].data.values[0]
+    # start_date = df_header[df_header['attribute'] == '#Date'].data.values[0]
+    # start_datetime = str(str(start_date) + " " + str(start_time))
+    # increment = df_header[df_header['attribute'] == '#Logging Interval[s]'].data.values[0]
+    # increment = int(float(increment))/ 60
+    # count_row = df.shape[0] 
+    # duration = increment * (count_row)
+    # end_datetime= pd.to_datetime(start_datetime) + pd.to_timedelta(duration,'m')
+    #     # print(duration)
+    #     # print(count_row)    
+    #     # print("start time", start_datetime)
+    #     # print("end time", end_datetime)
 
-    ls_datetime_range = pd.date_range(start=start_datetime, periods=count_row, freq='5Min')
-    df_datetimes = pd.DataFrame(ls_datetime_range, columns=['datetime'])
-    df = pd.concat([df, df_datetimes], axis=1)
-    df.set_index('datetime', inplace =True)
-    df = df.tail(6)
+    # ls_datetime_range = pd.date_range(start=start_datetime, periods=count_row, freq='5Min')
+    # df_datetimes = pd.DataFrame(ls_datetime_range, columns=['datetime'])
+    # df = pd.concat([df, df_datetimes], axis=1)
+    # df.set_index('datetime', inplace =True)
+    # df = df.tail(6)
 
-    return df
+    # return df
 
 
 
@@ -110,11 +110,15 @@ print(power_ls)
 # psu_pathmid = '/home/farscopestudent/Documents/WASE/wase-cabinet/rohde_schwarz'
 # psu_pathbot = '/home/farscopestudent/Documents/WASE/wase-cabinet/rohde_schwarz'
 
-barrel_psu= '/run/user/1000/gvfs/ftp://barrelspsu@169.254.8.8/int/logging'
+
+# '/run/user/1000/gvfs/ftp:host=192.168.100.107,user=toppsu/int/logging'
+
+barrel_psu= '/run/user/1000/gvfs/ftp:host=192.168.100.107,user=barrelspsu/int/logging'
 
 
 
 df_barrels = format_rs_csv(barrel_psu)
+print(df_barrels)
 
 # power supplies middle and bottom were set to timezone an hour out - this adjusts them to the current time zone
 # df_bot = df_bot.shift(periods=-1, freq="60T")
@@ -123,15 +127,15 @@ df_barrels = format_rs_csv(barrel_psu)
 
 
 
-df_barrels = append_rs_csv_to_ls(df_barrels, ['1', '2', '3', '4'])
+# df_barrels = append_rs_csv_to_ls(df_barrels, ['1', '2', '3', '4'])
 
-df_ls = [df_barrels]
-power_df = pd.concat(df_ls, axis=0) 
+# df_ls = [df_barrels]
+# power_df = pd.concat(df_ls, axis=0) 
 
 
-power_df.reset_index(inplace=True)
-power_df = power_df.rename(columns={"V": "voltageV", "A": "currentA", "P": "powerP", 'ID':'Name'})
-print(power_df)
+# power_df.reset_index(inplace=True)
+# power_df = power_df.rename(columns={"V": "voltageV", "A": "currentA", "P": "powerP", 'ID':'Name'})
+# print(power_df)
 
 
 
