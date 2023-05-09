@@ -97,12 +97,7 @@ cursor = cnx.cursor()
 # Insert data into the `flowmeter_temperature` table
 cols = "`,`".join(data_gas.columns.tolist())
 for i, row in data_gas.iterrows():
-    values = []
-    for value in row:
-        if np.isnan(value):
-            values.append(None)
-        else:
-            values.append(value)
+
     sql = "INSERT INTO `flowmeter_temperature` (`" + cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
     cursor.execute(sql, tuple(values))
     cnx.commit()
