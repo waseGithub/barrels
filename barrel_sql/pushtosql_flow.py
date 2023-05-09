@@ -80,10 +80,7 @@ data_gas['Cnt'] = data_gas.groupby(level='ID')['Cnt'].resample('30T', level=0).m
 data_gas.reset_index(inplace=True)
 data_gas['datetime'] = data_gas['datetime'].dt.strftime('%Y-%m-%d %H:%M:%S')
 
-
-
-print(data_gas.columns)
-
+print("sql push")
 cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='Barrels_datasets')
 cursor = cnx.cursor()
 cols = "`,`".join([str(i) for i in data_gas.columns.tolist()])
