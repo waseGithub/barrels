@@ -21,9 +21,11 @@ print('starting updated sql push')
 
 
 def replace_string_with_zero(value):
-    if isinstance(value, str):
+     if isinstance(value, str):
         return 0
-    else:
+     elif np.isnan(value):
+        return 0
+     else:
         return value
 
 def replace_negative_with_zero(value):
@@ -72,6 +74,11 @@ data_gas = data_gas.apply(pd.to_numeric, errors = 'coerce')
 data_gas.reset_index(inplace=True)
 data_gas.set_index(['datetime', 'ID'], inplace=True)
 data_gas = data_gas.applymap(replace_string_with_zero)
+
+
+
+
+
 data_gas = data_gas.applymap(replace_negative_with_zero)
 data_gas['Cnt'] = data_gas.groupby(level='ID')['Cnt'].resample('30T', level=0).max().fillna(0)
 
@@ -84,12 +91,6 @@ print("sql push")
 cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='Barrels_datasets')
 
 
-
-
-cursor = cnx.cursor()
-query = "SELECT nan FROM flowmeter_temperature"
-print("Executing query:", query)
-cursor.execute(query)
 
 
 
