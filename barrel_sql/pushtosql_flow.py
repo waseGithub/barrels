@@ -67,29 +67,23 @@ data_gas = data_gas[data_gas['ID'].isin(['1', '2', '3', '4'])]
 
 print(data_gas)
 
-print('finished')
+print('Set columns')
 data_gas = data_gas.apply(pd.to_numeric, errors = 'coerce')
 
 
 data_gas.reset_index(inplace=True)
 data_gas.set_index(['datetime', 'ID'], inplace=True)
 data_gas = data_gas.applymap(replace_string_with_zero)
-
-
-
-
-
 data_gas = data_gas.applymap(replace_negative_with_zero)
 data_gas['Cnt'] = data_gas.groupby(level='ID')['Cnt'].resample('30T', level=0).max().fillna(0)
-
-
-
 data_gas.reset_index(inplace=True)
 data_gas['datetime'] = data_gas['datetime'].dt.strftime('%Y-%m-%d %H:%M:%S')
 
-print("fuck the nan")
-cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='Barrels_datasets')
 
+
+print('Resampled')
+
+cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='Barrels_datasets')
 data_gas = data_gas.fillna(0)
 # Create a cursor object
 cursor = cnx.cursor()
@@ -99,14 +93,9 @@ for i,row in data_gas.iterrows():
     cursor.execute(sql, tuple(row))
     cnx.commit()
 
-
-
 cnx.close()
 
-
-
-
-print('pushed')
+print('Pushed to sql')
 
 os.remove('Sensor_A.csv')
 os.remove('Sensor_B.csv')
