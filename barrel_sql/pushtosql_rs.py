@@ -56,6 +56,8 @@ def format_rs_csv(csvdest):
     df.set_index('datetime', inplace =True)
     df = df.tail(6)
 
+    print(df)
+
     return df
 
 
