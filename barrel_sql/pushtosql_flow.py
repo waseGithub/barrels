@@ -93,14 +93,15 @@ cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.1
 data_gas = data_gas.fillna(0)
 # Create a cursor object
 cursor = cnx.cursor()
-
-# Insert data into the `flowmeter_temperature` table
-cols = "`,`".join(data_gas.columns.tolist())
-for i, row in data_gas.iterrows():
-
-    sql = "INSERT INTO `flowmeter_temperature` (`" + cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
-    cursor.execute(sql, tuple(values))
+cols = "`,`".join([str(i) for i in data_gas.columns.tolist()])
+for i,row in data_gas.iterrows():
+    sql = "INSERT INTO `flowmeter_temperature` (`" +cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
+    cursor.execute(sql, tuple(row))
     cnx.commit()
+
+
+
+cnx.close()
 
 
 
