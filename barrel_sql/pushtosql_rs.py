@@ -70,18 +70,8 @@ def append_rs_csv_to_ls(df, tank_names_ls):
         print(tank)
         index_value = barrels_postion.get(tank)
         print(index_value)
-
         single_tank_df = df[["U" + str(index_value) + "[V]", "I" + str(index_value) +"[A]", "P" + str(index_value) + "[W]"]]
-
-        
-        # single_tank_df['ID'] = tank
         single_tank_df.insert(1, "ID", tank, True)
-
-      
-
-
-        # single_tank_df.loc['ID'] = tank
-        
         single_tank_df = single_tank_df.rename(columns={"U" + str(index_value) + "[V]" :'V', "I" + str(index_value) +"[A]" : 'A', "P" + str(index_value) + "[W]":'P'})
         single_tank_ls.append(single_tank_df)
     concat_df = pd.concat(single_tank_ls, axis=0)
