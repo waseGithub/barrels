@@ -113,7 +113,7 @@ print(power_ls)
 
 # '/run/user/1000/gvfs/ftp:host=192.168.100.107,user=toppsu/int/logging'
 
-barrel_psu= '/run/user/1000/gvfs/ftp:host=192.168.100.107,user=barrelspsu/int/logging'
+barrel_psu= '/run/user/1000/gvfs/ftp:host=169.254.8.8,user=barrelspsu/int/logging'
 
 
 
