@@ -91,26 +91,24 @@ print("fuck the nan")
 cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='Barrels_datasets')
 
 
-
-
-
-
+# Create a cursor object
+cursor = cnx.cursor()
 
 # Insert data into the `flowmeter_temperature` table
 cols = "`,`".join(data_gas.columns.tolist())
 for i, row in data_gas.iterrows():
     values = []
     for value in row:
-        if pd.isna(value):
+        if np.isnan(value):
             values.append(None)
         else:
             values.append(value)
-    sql = "INSERT INTO `mytable` (`col1`, `col2`, `col3`) VALUES (%s, %s, %s)"
-    cnx.execute(sql, tuple(values))
+    sql = "INSERT INTO `flowmeter_temperature` (`" + cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
+    cursor.execute(sql, tuple(values))
     cnx.commit()
 
-# Close the cursor and connection
-cnx.close()
+
+
 
 print('pushed')
 
