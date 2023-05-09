@@ -21,14 +21,16 @@ def format_rs_csv(csvdest):
     path2csv = Path(csvdest)
     csvlist = path2csv.glob("*.csv")
 
-    print(csvlist)
+    
 
     for i in csvlist:
         print(i)
         csvlist = [] 
         csvlist.append(i)
+    
+    print(csvlist)
 
-
+   
     csv = csvlist[0]
 
     df_header = pd.read_csv(csv, nrows=14, names=['attribute', 'data'])
