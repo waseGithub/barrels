@@ -130,6 +130,9 @@ power_df = power_df.rename(columns={"V": "voltageV", "A": "currentA", "P": "powe
 print(power_df)
 
 
+power_df.to_csv('power_df.csv')
+
+
 
  
 
