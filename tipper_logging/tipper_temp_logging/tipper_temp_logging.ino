@@ -10,8 +10,8 @@ OneWire oneWire(ONE_WIRE_BUS);
 // Pass oneWire reference to DallasTemperature library
 DallasTemperature sensors(&oneWire);
 
-int barrel_id = 4;
-int deviceCount = 0;
+int barrel_id = 1;
+int deviceCount = 2;
 float tempC;
 const int  R1TipperPin = 14;  // digital in 2 (pin the reactor 1's tipper is attached to)
 int R1TipperCounter = 0;
@@ -19,6 +19,7 @@ int R1TipperState = 1;
 int lastR1TipperState = 1;
 unsigned long previousMillis = 0;
 const long interval = 200;
+
 
 void setup(void)
 {
@@ -52,7 +53,7 @@ void loop(void)
   sensors.requestTemperatures(); 
   
   // Display temperature from each sensor
-  for (int i = 0;  i < deviceCount;  i++)
+  for (int i = 0;  i < 2;  i++)
   {
     tempC = sensors.getTempCByIndex(i);
     Serial.print(tempC);
@@ -65,5 +66,5 @@ void loop(void)
   }
   
 
-  delay(10);
+  delay(2);
 }
