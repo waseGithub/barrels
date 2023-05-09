@@ -62,31 +62,31 @@ data_gas = data_gas.sort_values(by='ID')
 data_gas = data_gas[data_gas['ID'].isin(['1', '2', '3', '4'])]
 
 print(data_gas)
-data_gas = data_gas.apply(pd.to_numeric)
+# data_gas = data_gas.apply(pd.to_numeric)
 
 
-data_gas.reset_index(inplace=True)
-data_gas.set_index(['datetime', 'ID'], inplace=True)
-data_gas = data_gas.applymap(replace_string_with_zero)
-data_gas = data_gas.applymap(replace_negative_with_zero)
-data_gas['Cnt'] = data_gas.groupby(level='ID')['Cnt'].resample('30T', level=0).max().fillna(0)
-
-
-
-data_gas.reset_index(inplace=True)
-data_gas['datetime'] = data_gas['datetime'].dt.strftime('%Y-%m-%d %H:%M:%S')
+# data_gas.reset_index(inplace=True)
+# data_gas.set_index(['datetime', 'ID'], inplace=True)
+# data_gas = data_gas.applymap(replace_string_with_zero)
+# data_gas = data_gas.applymap(replace_negative_with_zero)
+# data_gas['Cnt'] = data_gas.groupby(level='ID')['Cnt'].resample('30T', level=0).max().fillna(0)
 
 
 
+# data_gas.reset_index(inplace=True)
+# data_gas['datetime'] = data_gas['datetime'].dt.strftime('%Y-%m-%d %H:%M:%S')
 
 
-cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='Barrels_datasets')
-cursor = cnx.cursor()
-cols = "`,`".join([str(i) for i in data_gas.columns.tolist()])
-for i,row in data_gas.iterrows():
-    sql = "INSERT INTO `flowmeter_temperature` (`" +cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
-    cursor.execute(sql, tuple(row))
-    cnx.commit()
+
+
+
+# cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='Barrels_datasets')
+# cursor = cnx.cursor()
+# cols = "`,`".join([str(i) for i in data_gas.columns.tolist()])
+# for i,row in data_gas.iterrows():
+#     sql = "INSERT INTO `flowmeter_temperature` (`" +cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
+#     cursor.execute(sql, tuple(row))
+#     cnx.commit()
 
 
 
