@@ -110,7 +110,7 @@ barrel_psu= 'ftp://barrelspsu@169.254.8.8/int/logging/'
 
 
 
-df_barrels = format_rs_csv(link_ls[0])
+df_barrels = format_rs_csv(barrel_psu)
 
 # power supplies middle and bottom were set to timezone an hour out - this adjusts them to the current time zone
 # df_bot = df_bot.shift(periods=-1, freq="60T")
