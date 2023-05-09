@@ -66,14 +66,14 @@ data_gas = data_gas[data_gas['ID'].isin(['1', '2', '3', '4'])]
 print(data_gas)
 
 print('finished')
-# data_gas = data_gas.apply(pd.to_numeric)
+data_gas = data_gas.apply(pd.to_numeric, errors = 'coerce')
 
 
-# data_gas.reset_index(inplace=True)
-# data_gas.set_index(['datetime', 'ID'], inplace=True)
-# data_gas = data_gas.applymap(replace_string_with_zero)
-# data_gas = data_gas.applymap(replace_negative_with_zero)
-# data_gas['Cnt'] = data_gas.groupby(level='ID')['Cnt'].resample('30T', level=0).max().fillna(0)
+data_gas.reset_index(inplace=True)
+data_gas.set_index(['datetime', 'ID'], inplace=True)
+data_gas = data_gas.applymap(replace_string_with_zero)
+data_gas = data_gas.applymap(replace_negative_with_zero)
+data_gas['Cnt'] = data_gas.groupby(level='ID')['Cnt'].resample('30T', level=0).max().fillna(0)
 
 
 
