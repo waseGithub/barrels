@@ -64,9 +64,6 @@ data_gas = data_gas.sort_values(by='ID')
 
 
 data_gas = data_gas[data_gas['ID'].isin(['1', '2', '3', '4'])]
-
-print(data_gas)
-
 print('Set columns')
 data_gas = data_gas.apply(pd.to_numeric, errors = 'coerce')
 
