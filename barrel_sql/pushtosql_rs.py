@@ -118,7 +118,7 @@ barrel_psu= '/run/user/1000/gvfs/ftp:host=169.254.8.8,user=barrelspsu/int/loggin
 
 
 df_barrels = format_rs_csv(barrel_psu)
-print(df_barrels)
+
 
 # power supplies middle and bottom were set to timezone an hour out - this adjusts them to the current time zone
 # df_bot = df_bot.shift(periods=-1, freq="60T")
@@ -127,15 +127,15 @@ print(df_barrels)
 
 
 
-# df_barrels = append_rs_csv_to_ls(df_barrels, ['1', '2', '3', '4'])
+df_barrels = append_rs_csv_to_ls(df_barrels, ['1', '2', '3', '4'])
 
-# df_ls = [df_barrels]
-# power_df = pd.concat(df_ls, axis=0) 
+df_ls = [df_barrels]
+power_df = pd.concat(df_ls, axis=0) 
 
 
-# power_df.reset_index(inplace=True)
-# power_df = power_df.rename(columns={"V": "voltageV", "A": "currentA", "P": "powerP", 'ID':'Name'})
-# print(power_df)
+power_df.reset_index(inplace=True)
+power_df = power_df.rename(columns={"V": "voltageV", "A": "currentA", "P": "powerP", 'ID':'Name'})
+print(power_df)
 
 
 
