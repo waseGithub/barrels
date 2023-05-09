@@ -106,7 +106,7 @@ power_ls = []
 # psu_pathmid = '/home/farscopestudent/Documents/WASE/wase-cabinet/rohde_schwarz'
 # psu_pathbot = '/home/farscopestudent/Documents/WASE/wase-cabinet/rohde_schwarz'
 
-barrel_psu= 'ftp://barrelspsu@169.254.8.8/int/logging/'
+barrel_psu= 'ftp://barrelspsu@169.254.8.8/int/logging'
 
 
 
