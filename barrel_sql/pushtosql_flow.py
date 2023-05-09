@@ -94,7 +94,7 @@ data_gas['Cnt'] = data_gas.groupby(level='ID')['Cnt'].resample('30T', level=0).m
 
 
 
-cnx.close()
+# cnx.close()
 
 print('pushed')
 
