@@ -98,7 +98,7 @@ def append_rs_csv_to_ls(df, tank_names_ls):
 
 
 power_ls = []    
-# print(power_ls)
+print(power_ls)
 
 
 
