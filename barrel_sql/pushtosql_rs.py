@@ -21,6 +21,8 @@ def format_rs_csv(csvdest):
     path2csv = Path(csvdest)
     csvlist = path2csv.glob("*.csv")
 
+    print(cvslist)
+
     for i in csvlist:
         print(i)
         csvlist = [] 
