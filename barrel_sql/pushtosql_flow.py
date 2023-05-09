@@ -110,7 +110,7 @@ for i, row in data_gas.iterrows():
     cnx.commit()
 
 # Close the cursor and connection
-cursor.close()cnx.close()
+cnx.close()
 
 print('pushed')
 
