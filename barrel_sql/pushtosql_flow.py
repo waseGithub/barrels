@@ -82,7 +82,7 @@ data_gas = data_gas.applymap(replace_negative_with_zero)
 
 data_gas = data_gas.groupby(level='ID').resample('30T', level=0).max().fillna(0)
 
-
+print(data_gas)
 
 
 data_gas.reset_index(inplace=True)
