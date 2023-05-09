@@ -90,7 +90,7 @@ data_gas['datetime'] = data_gas['datetime'].dt.strftime('%Y-%m-%d %H:%M:%S')
 print("fuck the nan")
 cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='Barrels_datasets')
 
-
+data_gas = data_gas.fillna(0)
 # Create a cursor object
 cursor = cnx.cursor()
 
