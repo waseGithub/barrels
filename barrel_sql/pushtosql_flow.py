@@ -82,6 +82,19 @@ data_gas['datetime'] = data_gas['datetime'].dt.strftime('%Y-%m-%d %H:%M:%S')
 
 print("sql push")
 cnx = mysql.connector.connect(user='root', password='wase2022', host='34.89.81.147', database='Barrels_datasets')
+
+
+
+
+cursor = cnx.cursor()
+query = "SELECT nan FROM flowmeter_temperature"
+print("Executing query:", query)
+cursor.execute(query)
+
+
+
+
+
 cursor = cnx.cursor()
 cols = "`,`".join([str(i) for i in data_gas.columns.tolist()])
 for i,row in data_gas.iterrows():
