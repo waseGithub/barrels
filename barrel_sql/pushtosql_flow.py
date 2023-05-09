@@ -108,9 +108,9 @@ cnx.close()
 
 print('pushed')
 
-# os.remove('Sensor_A.csv')
-# os.remove('ensor_B.csv')
-# os.remove('Sensor_C.csv')
-# os.remove('Sensor_D.csv')
+os.remove('Sensor_A.csv')
+os.remove('Sensor_B.csv')
+os.remove('Sensor_C.csv')
+os.remove('Sensor_D.csv')
 
 
