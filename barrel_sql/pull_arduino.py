@@ -126,7 +126,7 @@ if __name__ == '__main__':
                 line1 = ser1.readline().decode("utf-8")
                 
                 
-                with open ("Sensor_A.csv","a") as f:
+                with open ("/home/waselab2/Documents/barrels/barrel_sql/Sensor_A.csv","a") as f:
                     
                     writer = csv.writer(f, delimiter=",")
                     writer.writerow([time.asctime(),line1])
@@ -138,7 +138,7 @@ if __name__ == '__main__':
                 line2 = ser2.readline().decode("utf-8")
                 
                 
-                with open ("Sensor_B.csv","a") as f:
+                with open ("/home/waselab2/Documents/barrels/barrel_sql/Sensor_B.csv","a") as f:
                     
                     writer = csv.writer(f, delimiter=",")
                     writer.writerow([time.asctime(),line2])
@@ -150,7 +150,7 @@ if __name__ == '__main__':
                 line3 = ser3.readline().decode("utf-8")
             
                 
-                with open ("Sensor_C.csv","a") as f:
+                with open ("/home/waselab2/Documents/barrels/barrel_sql/Sensor_C.csv","a") as f:
                     
                     writer = csv.writer(f, delimiter=",")
                     writer.writerow([time.asctime(),line3])
@@ -161,7 +161,7 @@ if __name__ == '__main__':
                 line4 = ser4.readline().decode("utf-8")
             
                 
-                with open ("Sensor_D.csv","a") as f:
+                with open ("/home/waselab2/Documents/barrels/barrel_sql/Sensor_D.csv","a") as f:
                     
                     writer = csv.writer(f, delimiter=",")
                     writer.writerow([time.asctime(),line4])
