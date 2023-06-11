@@ -103,9 +103,9 @@ cnx.close()
 
 print('Pushed to sql')
 
-os.remove('Sensor_A.csv')
-os.remove('Sensor_B.csv')
-os.remove('Sensor_C.csv')
-os.remove('Sensor_D.csv')
+os.remove('/home/waselab2/Documents/barrels/barrel_sql/Sensor_A.csv')
+os.remove('/home/waselab2/Documents/barrels/barrel_sql/Sensor_B.csv')
+os.remove('/home/waselab2/Documents/barrels/barrel_sql/Sensor_C.csv')
+os.remove('/home/waselab2/Documents/barrels/barrel_sql/Sensor_D.csv')
 
 
